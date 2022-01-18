@@ -1,6 +1,6 @@
 # cvl-preconsultation-form (cvl-preconsultation-form)
 
-Pre-consultation form for CVL clients
+Pre-consultation form for clients in hospital veterinary.
 
 ## Install the dependencies
 ```bash
