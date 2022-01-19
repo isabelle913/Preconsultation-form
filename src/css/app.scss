@@ -1,1 +1,42 @@
 // app global css in SCSS form
+@font-face {
+  font-family: nunito;
+  src: url(./fonts/NunitoSans-Regular.ttf);
+}
+
+// Disposition navbar
+.title-desktop {
+  font-size: 21px;
+}
+
+.box-text-welcome {
+  width: 80%;
+  //   background: pink;
+}
+
+.text-welcome {
+  font-size: 2rem;
+  font-family: nunito;
+  text-align: center;
+}
+
+.box-btn-language {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 50px 100px;
+  //   background: pink;
+}
+
+.btn {
+  background: #b0e3d6;
+  color: white;
+  font-size: 1.5rem;
+  margin: 0 10%;
+}
+
+.page {
+  width: 80%;
+  //   background: lightblue;
+  margin: 0 auto;
+}
