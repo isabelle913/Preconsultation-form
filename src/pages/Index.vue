@@ -1,17 +1,20 @@
 <template>
-  <q-page class="flex flex-center">
-    <div class="box-text-welcome">
-      <p class="text-welcome">Bonjour et bienvenue au</p>
-      <p class="text-welcome">Centre Vétérinaire Laval</p>
-      <p class="text-welcome">Veuillez choisir votre language</p>
-      <h3 class="text-welcome">
-        Hello and welcome to Centre Vétérinaire Laval, please choose your
-        language
-      </h3>
+  <q-page>
+    <div class="box-logo">
+      <!-- <img
+        src="../assets/cvl500px.png"
+        alt="Logo du Centre Vétérinaire Laval"
+      /> -->
+      <img
+        src="../assets/CVL_complet_rouge.png"
+        alt="Logo du Centre Vétérinaire Laval"
+        class="logo"
+      />
     </div>
+
     <div class="box-btn-language">
       <q-btn label="Français" class="btn" to="/fr" />
-      <q-btn label="Anglais" class="btn" to="/en" />
+      <q-btn label="English" class="btn" to="/en" />
     </div>
   </q-page>
 </template>

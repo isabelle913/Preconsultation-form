@@ -2,14 +2,24 @@
   <q-layout view="hHh lpR fFf">
     <q-header elevated class="bg-primary text-white">
       <q-toolbar>
-        <q-toolbar-title> Questionnaire pré consultation </q-toolbar-title>
-        <div class="title-desktop">Centre Vétérinaire Laval - Vet et Nous</div>
+        <q-toolbar-title class="toolbar-title">
+          <div>Votre formulaire</div>
+          <div>Pré-consultation</div>
+        </q-toolbar-title>
       </q-toolbar>
     </q-header>
 
     <q-page-container>
       <router-view />
     </q-page-container>
+
+    <q-footer elevated class="bg-primary text-white">
+      <q-toolbar>
+        <q-toolbar-title class="toolbar-title">
+          <div>Centre Vétérinaire Laval - Vet et Nous</div>
+        </q-toolbar-title>
+      </q-toolbar>
+    </q-footer>
   </q-layout>
 </template>
 

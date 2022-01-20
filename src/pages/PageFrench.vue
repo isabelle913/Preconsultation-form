@@ -1,23 +1,79 @@
 <template>
   <q-page class="page">
-    <h1>Français</h1>
-    <p>
-      Veuillez remplir les informations suivantes concernant votre animal au
-      mieux de vos connaissances:
-    </p>
-    <br />
-    <br />
     <q-form @submit="onSubmit" class="q-gutter-md">
+      <!-- information client -->
+      <p class="text-instruction">Vos informations:</p>
+      <div class="information-container">
+        <div class="information-element">
+          <label>Votre nom :</label>
+          <q-input
+            outlined
+            v-model="informationClient.clientName"
+            type="text"
+            clearable
+            lazy-rules
+            autofocus
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+          />
+        </div>
+        <div class="information-element">
+          <label for="">Nom de votre animal :</label>
+          <q-input
+            outlined
+            v-model="informationClient.patientName"
+            type="text"
+            clearable
+            lazy-rules
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+          />
+        </div>
+      </div>
+      <div class="information-container">
+        <div class="information-element">
+          <label for="">Votre numéro de téléphone :</label>
+          <q-input
+            outlined
+            v-model="informationClient.phoneNumber"
+            type="tel"
+            autogrow
+            clearable
+            lazy-rules
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+          />
+        </div>
+        <div class="information-element">
+          <label>Votre numéro de dossier si connu:</label>
+          <q-input
+            outlined
+            v-model="informationClient.dossierID"
+            type="text"
+            clearable
+            lazy-rules
+          />
+        </div>
+      </div>
+      <div class="separator-red"></div>
+
+      <!-- section question -->
+      <p class="text-instruction">
+        Veuillez remplir les informations suivantes concernant votre animal au
+        mieux de vos connaissances:
+      </p>
       <div>
         <label for="">Quelle est la raison de présentation aujourd’hui :</label>
         <q-input
-          filled
+          outlined
           v-model="name1"
           type="text"
           autogrow
           clearable
           lazy-rules
-          autofocus
           :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         />
       </div>
@@ -27,32 +83,21 @@
           >Plus en détails, décrives le ou les problème(s) et depuis combien de
           temps :</label
         >
-        <q-input
-          outlined
-          v-model="name2"
-          type="text"
-          autogrow
-          clearable
-          lazy-rules
-          autofocus
-          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        />
+        <q-input outlined v-model="name2" type="text" autogrow clearable />
       </div>
       <div>
         <label for="">Quelle est la raison de présentation aujourd’hui :</label>
         <q-input
-          filled
+          outlined
           v-model="name3"
           type="text"
           autogrow
-          label="Your name *"
-          hint="Name and surname"
           clearable
           lazy-rules
-          autofocus
           :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         />
       </div>
+
       <div>
         <div>
           <label for="">Est-ce que votre animal mange : </label>
@@ -62,72 +107,73 @@
         <div>
           <label for="">Si non, depuis combien de temps :</label>
           <q-input
-            filled
+            outlined
             v-model="name3"
             type="text"
             autogrow
             clearable
             lazy-rules
-            autofocus
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
           />
         </div>
       </div>
-      <div>
-        <label for=""
-          >Est-ce que votre animal présente des vomissements :
-        </label>
-        <q-radio v-model="mange" val="line" label="Oui" />
-        <q-radio v-model="mange" val="rectangle" label="Non" />
-      </div>
-      <div>
-        <label for="">Est-ce que votre animal présente de la diarrhée : </label>
-        <q-radio v-model="mange" val="line" label="Oui" />
-        <q-radio v-model="mange" val="rectangle" label="Non" />
-      </div>
-      <div>
-        <label for=""
-          >Est-ce que votre animal présente des urines anormales:
-        </label>
-        <q-radio v-model="mange" val="line" label="Oui" />
-        <q-radio v-model="mange" val="rectangle" label="Non" />
-      </div>
-      <div>
-        <label for="">Est-ce que votre animal présente de la toux : </label>
-        <q-radio v-model="mange" val="line" label="Oui" />
-        <q-radio v-model="mange" val="rectangle" label="Non" />
+
+      <div class="radio-section">
+        <!-- Exemple -->
+        <div class="radio-container">
+          <div class="section-element-question">
+            <label for=""
+              >Est-ce que votre animal présente des vomissements :
+            </label>
+          </div>
+          <div class="section-element-response">
+            <q-radio v-model="mange" val="line" label="Oui" />
+            <q-radio v-model="mange" val="rectangle" label="Non" />
+          </div>
+        </div>
+        <!-- exemple fin -->
+        <div>
+          <label for=""
+            >Est-ce que votre animal présente de la diarrhée :
+          </label>
+          <q-radio v-model="mange" val="line" label="Oui" />
+          <q-radio v-model="mange" val="rectangle" label="Non" />
+        </div>
+        <div>
+          <label for=""
+            >Est-ce que votre animal présente des urines anormales:
+          </label>
+          <q-radio v-model="mange" val="line" label="Oui" />
+          <q-radio v-model="mange" val="rectangle" label="Non" />
+        </div>
+        <div>
+          <label for="">Est-ce que votre animal présente de la toux : </label>
+          <q-radio v-model="mange" val="line" label="Oui" />
+          <q-radio v-model="mange" val="rectangle" label="Non" />
+        </div>
+        <div>
+          <label for=""
+            >Est-ce que votre animal présente une augmentation de la prise d’eau
+            et des urines :
+          </label>
+          <q-radio v-model="mange" val="line" label="Oui" />
+          <q-radio v-model="mange" val="rectangle" label="Non" />
+        </div>
+        <div>
+          <label for=""
+            >Est-ce que votre animal présente une perte de poids :
+          </label>
+          <q-radio v-model="mange" val="line" label="Oui" />
+          <q-radio v-model="mange" val="rectangle" label="Non" />
+        </div>
       </div>
 
       <div>
         <q-btn label="Submit" type="submit" color="primary" />
       </div>
     </q-form>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, enim
-      fugit quibusdam autem quidem eaque esse dolores eos, similique, facere
-      pariatur nulla voluptatum voluptate! Temporibus nostrum omnis architecto
-      praesentium, modi soluta impedit explicabo optio ab harum veritatis cum
-      vero cupiditate, recusandae cumque? Temporibus quaerat magni minima quae
-      repellendus iusto amet, reprehenderit error et esse itaque molestias.
-      Animi corrupti iusto dicta obcaecati est temporibus alias ex quibusdam at!
-      Deserunt, ipsam ipsum accusantium odio corporis eaque dignissimos laborum.
-      Beatae a rem, accusantium, eius, hic corrupti sapiente eaque ex id libero
-      minima laudantium quaerat est maiores nostrum saepe rerum provident
-      similique odio ratione quia praesentium! Voluptatem quis corporis
-      excepturi itaque, blanditiis deserunt explicabo. Tempore voluptatem veniam
-      ratione voluptas, nemo quaerat impedit sit veritatis, quam harum quae non
-      dicta libero nulla qui iste accusantium rem a iusto optio dolorum numquam
-      praesentium aut? Minus, mollitia suscipit cupiditate distinctio quae,
-      excepturi dolore pariatur voluptates nesciunt maxime voluptatem nobis
-      architecto corporis dolor veniam? Velit quasi reiciendis earum rem
-      inventore beatae, laborum architecto at ullam eveniet aliquid perspiciatis
-      totam neque omnis doloribus quis quos repellat sequi provident a? Pariatur
-      perferendis temporibus veniam. Debitis excepturi nisi dolore minima?
-      Aspernatur dolore corporis molestias itaque eligendi vero repellat sit,
-      saepe dicta!
-    </p>
   </q-page>
 </template>
 
@@ -135,11 +181,126 @@
 export default {
   data() {
     return {
-      name1: "",
-      name2: "",
-      name3: "",
-      age: "",
-      mange: "",
+      informationClient: {
+        dossierID: "",
+        clientName: "",
+        patientName: "",
+        phoneNumber: "",
+      },
+      questionResponse: {
+        1: {
+          question: "Quelle est la raison de présentation aujourd’hui : ",
+          response: "",
+          type: "text",
+          required: true,
+        },
+        2: {
+          question:
+            "Plus en détails, décrives le ou les problème(s) et depuis combien de temps : ",
+          response: "",
+          type: "text",
+          required: false,
+        },
+        3: {
+          question: "Est-ce que votre animal mange : ",
+          response: "",
+          type: "radio",
+          required: true,
+        },
+        4: {
+          question: "Si non, depuis combien de temps :",
+          response: "",
+          type: "text",
+          required: true,
+        },
+        5: {
+          question: "Est-ce que votre animal présente des vomissements :",
+          response: "",
+          type: "radio",
+          required: true,
+        },
+        6: {
+          question: "Est-ce que votre animal présente de la diarrhée :",
+          response: "",
+          type: "radio",
+          required: true,
+        },
+        7: {
+          question: "Est-ce que votre animal présente des urines anormales:",
+          response: "",
+          type: "radio",
+          required: true,
+        },
+        8: {
+          question: "Est-ce que votre animal présente de la toux :",
+          response: "",
+          type: "radio",
+          required: true,
+        },
+        9: {
+          question:
+            "Est-ce que votre animal présente une augmentation de la prise d’eau et des urines : ",
+          response: "radio",
+          type: "",
+          required: true,
+        },
+        10: {
+          question: "Est-ce que votre animal présente une perte de poids :",
+          response: "",
+          type: "radio",
+          required: true,
+        },
+        11: {
+          question: "Antécédents médicaux connus:",
+          response: "",
+          type: "text",
+          required: false,
+        },
+        12: {
+          question:
+            "Médicament(s) d’ordonnance et/ou vente libre/supplément(s) pris actuellement (noter le nom, la posologie et l’heure d’administration):",
+          response: "",
+          type: "text",
+          required: false,
+        },
+        13: {
+          question: "Diète quotidienne : ",
+          response: "",
+          type: "text",
+          required: false,
+        },
+        14: {
+          question: "Statut vaccinal : ",
+          response: "",
+          type: "text",
+          required: false,
+        },
+        15: {
+          question: "Prévention antiparasitaire : ",
+          response: "",
+          type: "text",
+          required: false,
+        },
+        16: {
+          question: "Allergies connues :",
+          response: "",
+          type: "text",
+          required: false,
+        },
+        17: {
+          question: "Est-ce que votre animal va à l’extérieur :  ",
+          response: "",
+          type: "text",
+          required: false,
+        },
+        18: {
+          question:
+            "Quel est le caractère de votre animal en milieu vétérinaire  (calme, anxieux, énergique, etc) : ",
+          response: "",
+          type: "text",
+          required: false,
+        },
+      },
     };
   },
 };
