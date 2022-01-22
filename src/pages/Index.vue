@@ -13,8 +13,8 @@
     </div>
 
     <div class="box-btn-language">
-      <q-btn label="Français" class="btn" to="/fr" />
-      <q-btn label="English" class="btn" to="/en" />
+      <q-btn label="Français" class="btn-language" to="/fr" />
+      <q-btn label="English" class="btn-language" to="/en" />
     </div>
   </q-page>
 </template>

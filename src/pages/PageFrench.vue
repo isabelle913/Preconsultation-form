@@ -5,56 +5,59 @@
       <p class="text-instruction">Vos informations:</p>
       <div class="information-container">
         <div class="information-element">
-          <label>Votre nom :</label>
+          <label>{{ informationClient.clientName.question }}</label>
           <q-input
             outlined
-            v-model="informationClient.clientName"
+            v-model="informationClient.clientName.response"
             type="text"
             clearable
             lazy-rules
-            autofocus
             :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
+              (val) =>
+                (val && val.length > 0) ||
+                'Veuillez inscrire votre réponse / Please type something ',
             ]"
           />
         </div>
         <div class="information-element">
-          <label for="">Nom de votre animal :</label>
+          <label>{{ informationClient.patientName.question }}</label>
           <q-input
             outlined
-            v-model="informationClient.patientName"
+            v-model="informationClient.patientName.response"
             type="text"
             clearable
             lazy-rules
             :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
+              (val) =>
+                (val && val.length > 0) ||
+                'Veuillez inscrire votre réponse / Please type something ',
             ]"
           />
         </div>
       </div>
       <div class="information-container">
         <div class="information-element">
-          <label for="">Votre numéro de téléphone :</label>
+          <label>{{ informationClient.phoneNumber.question }}</label>
           <q-input
             outlined
-            v-model="informationClient.phoneNumber"
-            type="tel"
-            autogrow
+            v-model="informationClient.phoneNumber.response"
+            type="text"
             clearable
             lazy-rules
             :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
+              (val) =>
+                (val && val.length > 0) ||
+                'Veuillez inscrire votre réponse / Please type something ',
             ]"
           />
         </div>
         <div class="information-element">
-          <label>Votre numéro de dossier si connu:</label>
+          <label>{{ informationClient.dossierID.question }}</label>
           <q-input
             outlined
-            v-model="informationClient.dossierID"
+            v-model="informationClient.dossierID.response"
             type="text"
             clearable
-            lazy-rules
           />
         </div>
       </div>
@@ -65,127 +68,80 @@
         Veuillez remplir les informations suivantes concernant votre animal au
         mieux de vos connaissances:
       </p>
-      <div>
-        <label for="">Quelle est la raison de présentation aujourd’hui :</label>
-        <q-input
-          outlined
-          v-model="name1"
-          type="text"
-          autogrow
-          clearable
-          lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        />
-      </div>
 
-      <div>
-        <label for=""
-          >Plus en détails, décrives le ou les problème(s) et depuis combien de
-          temps :</label
-        >
-        <q-input outlined v-model="name2" type="text" autogrow clearable />
-      </div>
-      <div>
-        <label for="">Quelle est la raison de présentation aujourd’hui :</label>
-        <q-input
-          outlined
-          v-model="name3"
-          type="text"
-          autogrow
-          clearable
-          lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        />
-      </div>
-
-      <div>
-        <div>
-          <label for="">Est-ce que votre animal mange : </label>
-          <q-radio v-model="mange" val="line" label="Oui" />
-          <q-radio v-model="mange" val="rectangle" label="Non" />
-        </div>
-        <div>
-          <label for="">Si non, depuis combien de temps :</label>
+      <div v-for="(question, index) in questionResponse" :key="index">
+        <div v-if="question.type === 'text' && !question.required">
+          <label>{{ question.question }}</label>
           <q-input
             outlined
-            v-model="name3"
+            v-model="question.response"
+            type="text"
+            autogrow
+            clearable
+          />
+        </div>
+
+        <div class="radio-container" v-if="question.type === 'radio'">
+          <label class="radio-question">{{ question.question }}</label>
+          <div class="radio-response">
+            <q-radio v-model="question.response" val="oui" label="Oui" />
+            <q-radio v-model="question.response" val="non" label="Non" />
+          </div>
+        </div>
+
+        <div v-if="question.type === 'text' && question.required">
+          <label>{{ question.question }}</label>
+          <q-input
+            outlined
+            v-model="question.response"
             type="text"
             autogrow
             clearable
             lazy-rules
             :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
+              (val) =>
+                (val && val.length > 0) ||
+                'Veuillez inscrire votre réponse / Please type something ',
             ]"
           />
         </div>
       </div>
 
-      <div class="radio-section">
-        <!-- Exemple -->
-        <div class="radio-container">
-          <div class="section-element-question">
-            <label for=""
-              >Est-ce que votre animal présente des vomissements :
-            </label>
-          </div>
-          <div class="section-element-response">
-            <q-radio v-model="mange" val="line" label="Oui" />
-            <q-radio v-model="mange" val="rectangle" label="Non" />
-          </div>
-        </div>
-        <!-- exemple fin -->
-        <div>
-          <label for=""
-            >Est-ce que votre animal présente de la diarrhée :
-          </label>
-          <q-radio v-model="mange" val="line" label="Oui" />
-          <q-radio v-model="mange" val="rectangle" label="Non" />
-        </div>
-        <div>
-          <label for=""
-            >Est-ce que votre animal présente des urines anormales:
-          </label>
-          <q-radio v-model="mange" val="line" label="Oui" />
-          <q-radio v-model="mange" val="rectangle" label="Non" />
-        </div>
-        <div>
-          <label for="">Est-ce que votre animal présente de la toux : </label>
-          <q-radio v-model="mange" val="line" label="Oui" />
-          <q-radio v-model="mange" val="rectangle" label="Non" />
-        </div>
-        <div>
-          <label for=""
-            >Est-ce que votre animal présente une augmentation de la prise d’eau
-            et des urines :
-          </label>
-          <q-radio v-model="mange" val="line" label="Oui" />
-          <q-radio v-model="mange" val="rectangle" label="Non" />
-        </div>
-        <div>
-          <label for=""
-            >Est-ce que votre animal présente une perte de poids :
-          </label>
-          <q-radio v-model="mange" val="line" label="Oui" />
-          <q-radio v-model="mange" val="rectangle" label="Non" />
-        </div>
-      </div>
-
-      <div>
-        <q-btn label="Submit" type="submit" color="primary" />
+      <div class="btn-submit-container">
+        <q-btn label="Submit" type="submit" class="btn-submit" />
       </div>
     </q-form>
   </q-page>
 </template>
 
 <script>
+import { ContentEmail } from "../class/createContentEmail.js";
+
 export default {
   data() {
     return {
+      nameTest: "",
       informationClient: {
-        dossierID: "",
-        clientName: "",
-        patientName: "",
-        phoneNumber: "",
+        dossierID: {
+          question: "Votre numéro de dossier si connu:",
+          titleEmail: "Numéro de dossier: ",
+          response: "",
+        },
+        clientName: {
+          question: "Votre nom",
+          titleEmail: "Nom: ",
+          response: "",
+        },
+        patientName: {
+          question: "Nom de votre animal:",
+          titleEmail: "Nom du patient: ",
+          response: "",
+        },
+        phoneNumber: {
+          question: "Votre numéro de téléphone:",
+          titleEmail: "Numéro de téléphone: ",
+          response: "",
+        },
       },
       questionResponse: {
         1: {
@@ -211,7 +167,7 @@ export default {
           question: "Si non, depuis combien de temps :",
           response: "",
           type: "text",
-          required: true,
+          required: false,
         },
         5: {
           question: "Est-ce que votre animal présente des vomissements :",
@@ -240,8 +196,8 @@ export default {
         9: {
           question:
             "Est-ce que votre animal présente une augmentation de la prise d’eau et des urines : ",
-          response: "radio",
-          type: "",
+          response: "",
+          type: "radio",
           required: true,
         },
         10: {
@@ -290,7 +246,7 @@ export default {
         17: {
           question: "Est-ce que votre animal va à l’extérieur :  ",
           response: "",
-          type: "text",
+          type: "radio",
           required: false,
         },
         18: {
@@ -302,6 +258,16 @@ export default {
         },
       },
     };
+  },
+  methods: {
+    onSubmit() {
+      const tempo = ContentEmail.createContentEmail(
+        this.informationClient,
+        this.questionResponse
+      );
+      console.log(tempo.body);
+      console.log(tempo.subject);
+    },
   },
 };
 </script>
