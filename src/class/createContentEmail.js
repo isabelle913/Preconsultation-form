@@ -59,16 +59,24 @@ export class ContentEmail {
     return tempo;
   }
 
-  static footer = `</body></html>`;
+  static footer(formatNow) {
+    let tempo = `<p>Ce formulaire à été complété le ${formatNow} (heure du device client)</p></body></html>`;
+    return tempo;
+  }
 
   static createContentEmail(informationClient, questionResponse) {
     let emailBody = ContentEmail.head;
+    const now = new Date();
+
+    const formatNow = `${now.getDate()}/${
+      now.getMonth() + 1
+    }/${now.getFullYear()} à ${now.getHours()}:${now.getMinutes()} `;
 
     emailBody += ContentEmail.informationclient(informationClient);
 
     emailBody += ContentEmail.responseClient(questionResponse);
 
-    emailBody += ContentEmail.footer;
+    emailBody += ContentEmail.footer(formatNow);
 
     const emailSubject = `Formulaire pré-consultation de ${informationClient.patientName.response}, ${informationClient.clientName.response}, ${informationClient.dossierID.response}`;
 

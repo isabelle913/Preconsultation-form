@@ -320,7 +320,7 @@ export default {
         this.informationClient,
         this.questionResponse
       ).body;
-      // console.log(body);
+      console.log(body);
       // console.log(subject);
       axios
         .post("/_outilsinternes/mail.php", {
@@ -347,6 +347,9 @@ export default {
           btnSubmit.classList.add("hidden");
         });
     },
+  },
+  mounted() {
+    console.log(`Bonjour Ian et Mathieu :)`);
   },
 };
 </script>
