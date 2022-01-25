@@ -9,7 +9,7 @@ export class ContentEmail {
                         <style type="text/css">
                           body {
                             font-family: sans-serif;
-                            max-width: 600px;
+                            max-width: 900px;
                             margin: auto;
                             padding: 15px;
                           }
@@ -21,7 +21,8 @@ export class ContentEmail {
                             display: flex;
                           }
                           .question {
-                            width: 30%;
+                            width: 50%;
+                            min-width: 40%;
                           }
                           .separator-red {
                             width: 100%;

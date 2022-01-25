@@ -4,7 +4,7 @@
       <q-toolbar>
         <q-toolbar-title class="toolbar-title">
           <div>Votre formulaire</div>
-          <div>Pré-consultation</div>
+          <div>pré-consultation</div>
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
