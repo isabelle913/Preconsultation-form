@@ -14,8 +14,7 @@
             lazy-rules
             :rules="[
               (val) =>
-                (val && val.length > 0) ||
-                'Veuillez inscrire votre réponse / Please type something ',
+                (val && val.length > 0) || 'Veuillez inscrire votre réponse',
             ]"
           />
         </div>
@@ -29,8 +28,7 @@
             lazy-rules
             :rules="[
               (val) =>
-                (val && val.length > 0) ||
-                'Veuillez inscrire votre réponse / Please type something ',
+                (val && val.length > 0) || 'Veuillez inscrire votre réponse',
             ]"
           />
         </div>
@@ -41,13 +39,12 @@
           <q-input
             outlined
             v-model="informationClient.phoneNumber.response"
-            type="text"
+            type="tel"
             clearable
             lazy-rules
             :rules="[
               (val) =>
-                (val && val.length > 0) ||
-                'Veuillez inscrire votre réponse / Please type something ',
+                (val && val.length > 0) || 'Veuillez inscrire votre réponse',
             ]"
           />
         </div>
@@ -56,7 +53,16 @@
           <q-input
             outlined
             v-model="informationClient.dossierID.response"
-            type="text"
+            type="number"
+            clearable
+          />
+        </div>
+        <div class="information-element">
+          <label>{{ informationClient.clientEmail.question }}</label>
+          <q-input
+            outlined
+            v-model="informationClient.clientEmail.response"
+            type="email"
             clearable
           />
         </div>
@@ -65,7 +71,8 @@
 
       <!-- section question -->
       <p class="text-instruction">
-        Merci de remplir les informations au mieux de vos connaissances
+        Merci de répondre aux questions ci-dessous au mieux de vos
+        connaissances.
       </p>
 
       <div v-for="(question, index) in questionResponse" :key="index">
@@ -99,8 +106,7 @@
             lazy-rules
             :rules="[
               (val) =>
-                (val && val.length > 0) ||
-                'Veuillez inscrire votre réponse / Please type something ',
+                (val && val.length > 0) || 'Veuillez inscrire votre réponse',
             ]"
           />
         </div>
@@ -131,25 +137,29 @@ export default {
           response: "",
         },
         clientName: {
-          question: "Nom au dossier :",
+          question: "Nom au dossier : *",
           titleEmail: "Nom : ",
           response: "",
         },
         patientName: {
-          question: "Nom de votre animal :",
+          question: "Nom de votre animal : *",
           titleEmail: "Nom du patient : ",
           response: "",
         },
         phoneNumber: {
-          question: "Numéro de téléphone au dossier :",
+          question: "Numéro de téléphone au dossier : *",
           titleEmail: "Numéro de téléphone : ",
+          response: "",
+        },
+        clientEmail: {
+          question: "Votre courriel :",
+          titleEmail: "Courriel : ",
           response: "",
         },
       },
       questionResponse: {
         1: {
-          question:
-            "Quelle est la raison de votre visite ? ou Quelle est la raison de présentation aujourd’hui/ce qui vous inquiète principalement aujourd'hui' ",
+          question: "Quelle est la raison de votre visite ?",
           response: "",
           type: "text",
           required: true,
@@ -162,7 +172,7 @@ export default {
           required: false,
         },
         3: {
-          question: "Est-ce que votre animal mange ?",
+          question: "Est-ce que votre animal mange normalement ?",
           response: "",
           type: "radio",
           required: true,
@@ -223,7 +233,7 @@ export default {
         },
         13: {
           question:
-            "Est-ce que votre animal présente une augmentation de la prise d’eau et des urines ?",
+            "Est-ce que votre animal boit plus d’eau et urine plus qu’à l’habitude ?",
           response: "",
           type: "radio",
           required: true,
@@ -297,7 +307,7 @@ export default {
         },
         25: {
           question:
-            "Décrivez le comportement de votre animal en milieu vétérinaire (calme, anxieux, énergique, etc) :",
+            "Décrivez le comportement de votre animal en milieu vétérinaire (calme, anxieux, énergique, etc.) :",
           response: "",
           type: "text",
           required: false,
@@ -323,7 +333,7 @@ export default {
       console.log(body);
       // console.log(subject);
       axios
-        .post("/_outilsinternes/mail.php", {
+        .post("/_outilsinternes/forms/preconsultation-general/mail.php", {
           body: body,
           subject: subject,
           timeout: 2000,
