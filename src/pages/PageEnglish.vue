@@ -109,7 +109,7 @@
       </div>
 
       <div class="btn-submit-container">
-        <q-btn label="Submit" type="submit" class="btn-submit" />
+        <q-btn label="Submit" type="submit" class="btn-submit" no-caps />
         <h2 class="text-thanks hidden">Merci</h2>
         <h2 class="text-error hidden">
           Une erreur est survenue, veuillez en informer la réception
@@ -125,184 +125,183 @@ import { ContentEmail } from "../class/createContentEmail.js";
 export default {
   data() {
     return {
-      nameTest: "",
       informationClient: {
         dossierID: {
-          question: "Your file number (of known) :",
-          titleEmail: "Client ID : ",
+          question: "Your file number (of known):",
+          titleEmail: "Client ID: ",
           response: "",
         },
         clientName: {
-          question: "Name on file : *",
-          titleEmail: "Name : ",
+          question: "Name on file: *",
+          titleEmail: "Name: ",
           response: "",
         },
         patientName: {
-          question: "Name of your pet : *",
-          titleEmail: "Pet name : ",
+          question: "Name of your pet: *",
+          titleEmail: "Pet name: ",
           response: "",
         },
         phoneNumber: {
-          question: "Phone number on file : *",
-          titleEmail: "Phone number : ",
+          question: "Phone number on file: *",
+          titleEmail: "Phone number: ",
           response: "",
         },
         clientEmail: {
-          question: "Your email :",
-          titleEmail: "Client email : ",
+          question: "Your email:",
+          titleEmail: "Client email: ",
           response: "",
         },
       },
       questionResponse: {
         1: {
-          question: "What is the reason for your consultation today ?",
+          question: "What is the reason for your consultation today?",
           response: "",
           type: "text",
           required: true,
         },
         2: {
           question:
-            "Can you describe the problem(s) in depth and when it started ?",
+            "Can you describe the problem(s) in depth and when it started?",
           response: "",
           type: "text",
           required: false,
         },
         3: {
-          question: "Is your pet eating as usual ?",
+          question: "Is your pet eating as usual?",
           response: "",
           type: "radio",
           required: true,
         },
         4: {
-          question: "If not, since when ?",
+          question: "If not, since when?",
           response: "",
           type: "text",
           required: false,
         },
         5: {
-          question: "Is your pet vomiting ?",
+          question: "Is your pet vomiting?",
           response: "",
           type: "radio",
           required: true,
         },
         6: {
-          question: "Please specify :",
+          question: "Please specify:",
           response: "",
           type: "text",
           required: false,
         },
         7: {
-          question: "Does your pet have diarrhea ?",
+          question: "Does your pet have diarrhea?",
           response: "",
           type: "radio",
           required: true,
         },
         8: {
-          question: "Please specify :",
+          question: "Please specify:",
           response: "",
           type: "text",
           required: false,
         },
         9: {
-          question: "Is your pet’s urine abnormal ?",
+          question: "Is your pet’s urine abnormal?",
           response: "",
           type: "radio",
           required: true,
         },
         10: {
-          question: "Please specify :",
+          question: "Please specify:",
           response: "",
           type: "text",
           required: false,
         },
         11: {
-          question: "Is your pet coughing ?",
+          question: "Is your pet coughing?",
           response: "",
           type: "radio",
           required: true,
         },
         12: {
-          question: "Please specify :",
+          question: "Please specify:",
           response: "",
           type: "text",
           required: false,
         },
         13: {
-          question: "Is your animal drinking and urinating more than usual ?",
+          question: "Is your animal drinking and urinating more than usual?",
           response: "",
           type: "radio",
           required: true,
         },
         14: {
-          question: "Please specify :",
+          question: "Please specify:",
           response: "",
           type: "text",
           required: false,
         },
         15: {
-          question: "Did your pet lose weight ?",
+          question: "Did your pet lose weight?",
           response: "",
           type: "radio",
           required: true,
         },
         16: {
-          question: "Please specify :",
+          question: "Please specify:",
           response: "",
           type: "text",
           required: false,
         },
         17: {
-          question: "Known medical history :",
+          question: "Known medical history:",
           response: "",
           type: "text",
           required: false,
         },
         18: {
           question:
-            "Medication (prescribed or OTC) or supplements currently being taken. Please specify name, dosage, and administration hours :",
+            "Medication (prescribed or OTC) or supplements currently being taken. Please specify name, dosage, and administration hours:",
           response: "",
           type: "text",
           required: false,
         },
         19: {
-          question: "Daily diet :",
+          question: "Daily diet:",
           response: "",
           type: "text",
           required: false,
         },
         20: {
-          question: "Vaccination status :",
+          question: "Vaccination status:",
           response: "",
           type: "text",
           required: false,
         },
         21: {
-          question: "Parasite prevention :",
+          question: "Parasite prevention:",
           response: "",
           type: "text",
           required: false,
         },
         22: {
-          question: "Known allergies ?",
+          question: "Known allergies?",
           response: "",
           type: "text",
           required: false,
         },
         23: {
-          question: "Does your pet go outside ?",
+          question: "Does your pet go outside?",
           response: "",
           type: "radio",
           required: false,
         },
         24: {
-          question: "Please specify :",
+          question: "Please specify:",
           response: "",
           type: "text",
           required: false,
         },
         25: {
           question:
-            "What is your pet’s behaviour in a veterinary environment? (calm, anxious, energetic, etc.) :",
+            "What is your pet’s behaviour in a veterinary environment? (calm, anxious, energetic, etc.):",
           response: "",
           type: "text",
           required: false,

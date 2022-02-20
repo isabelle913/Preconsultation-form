@@ -113,7 +113,7 @@
       </div>
 
       <div class="btn-submit-container">
-        <q-btn label="Soumettre" type="submit" class="btn-submit" />
+        <q-btn label="Soumettre" type="submit" class="btn-submit" no-caps />
         <h2 class="text-thanks hidden">Merci</h2>
         <h2 class="text-error hidden">
           Une erreur est survenue, veuillez en informer la réception
@@ -132,34 +132,34 @@ export default {
       nameTest: "",
       informationClient: {
         dossierID: {
-          question: "Votre numéro de dossier si connu :",
+          question: "Votre numéro de dossier si connu:",
           titleEmail: "Numéro de dossier : ",
           response: "",
         },
         clientName: {
-          question: "Nom au dossier : *",
+          question: "Nom au dossier: *",
           titleEmail: "Nom : ",
           response: "",
         },
         patientName: {
-          question: "Nom de votre animal : *",
-          titleEmail: "Nom du patient : ",
+          question: "Nom de votre animal: *",
+          titleEmail: "Nom du patient: ",
           response: "",
         },
         phoneNumber: {
-          question: "Numéro de téléphone au dossier : *",
-          titleEmail: "Numéro de téléphone : ",
+          question: "Numéro de téléphone au dossier: *",
+          titleEmail: "Numéro de téléphone: ",
           response: "",
         },
         clientEmail: {
-          question: "Votre courriel :",
-          titleEmail: "Courriel : ",
+          question: "Votre courriel:",
+          titleEmail: "Courriel: ",
           response: "",
         },
       },
       questionResponse: {
         1: {
-          question: "Quelle est la raison de votre visite ?",
+          question: "Quelle est la raison de votre visite?",
           response: "",
           type: "text",
           required: true,
@@ -172,142 +172,142 @@ export default {
           required: false,
         },
         3: {
-          question: "Est-ce que votre animal mange normalement ?",
+          question: "Est-ce que votre animal mange normalement?",
           response: "",
           type: "radio",
           required: true,
         },
         4: {
-          question: "Si non, depuis combien de temps ?",
+          question: "Si non, depuis combien de temps?",
           response: "",
           type: "text",
           required: false,
         },
         5: {
-          question: "Est-ce que votre animal présente des vomissements ?",
+          question: "Est-ce que votre animal présente des vomissements?",
           response: "",
           type: "radio",
           required: true,
         },
         6: {
-          question: "Au besoin, précisez :",
+          question: "Au besoin, précisez:",
           response: "",
           type: "text",
           required: false,
         },
         7: {
-          question: "Est-ce que votre animal présente de la diarrhée ?",
+          question: "Est-ce que votre animal présente de la diarrhée?",
           response: "",
           type: "radio",
           required: true,
         },
         8: {
-          question: "Au besoin, précisez :",
+          question: "Au besoin, précisez:",
           response: "",
           type: "text",
           required: false,
         },
         9: {
-          question: "Est-ce que votre animal présente des urines anormales ?",
+          question: "Est-ce que votre animal présente des urines anormales?",
           response: "",
           type: "radio",
           required: true,
         },
         10: {
-          question: "Au besoin, précisez :",
+          question: "Au besoin, précisez:",
           response: "",
           type: "text",
           required: false,
         },
         11: {
-          question: "Est-ce que votre animal présente de la toux ?",
+          question: "Est-ce que votre animal présente de la toux?",
           response: "",
           type: "radio",
           required: true,
         },
         12: {
-          question: "Au besoin, précisez :",
+          question: "Au besoin, précisez:",
           response: "",
           type: "text",
           required: false,
         },
         13: {
           question:
-            "Est-ce que votre animal boit plus d’eau et urine plus qu’à l’habitude ?",
+            "Est-ce que votre animal boit plus d’eau et urine plus qu’à l’habitude?",
           response: "",
           type: "radio",
           required: true,
         },
         14: {
-          question: "Au besoin, précisez :",
+          question: "Au besoin, précisez:",
           response: "",
           type: "text",
           required: false,
         },
         15: {
-          question: "Est-ce que votre animal présente une perte de poids ?",
+          question: "Est-ce que votre animal présente une perte de poids?",
           response: "",
           type: "radio",
           required: true,
         },
         16: {
-          question: "Au besoin, précisez :",
+          question: "Au besoin, précisez:",
           response: "",
           type: "text",
           required: false,
         },
         17: {
-          question: "Antécédents médicaux connus :",
+          question: "Antécédents médicaux connus:",
           response: "",
           type: "text",
           required: false,
         },
         18: {
           question:
-            "Médicament(s) d’ordonnance et/ou vente libre/supplément(s) pris actuellement. Merci d’indiquer le nom, la posologie et l’heure d’administration :",
+            "Médicament(s) d’ordonnance et/ou vente libre/supplément(s) pris actuellement. Merci d’indiquer le nom, la posologie et l’heure d’administration:",
           response: "",
           type: "text",
           required: false,
         },
         19: {
-          question: "Sa diète quotidienne :",
+          question: "Sa diète quotidienne:",
           response: "",
           type: "text",
           required: false,
         },
         20: {
-          question: "Son statut vaccinal :",
+          question: "Son statut vaccinal:",
           response: "",
           type: "text",
           required: false,
         },
         21: {
-          question: "Prévention antiparasitaire :",
+          question: "Prévention antiparasitaire:",
           response: "",
           type: "text",
           required: false,
         },
         22: {
-          question: "Des allergies connues ?",
+          question: "Des allergies connues?",
           response: "",
           type: "text",
           required: false,
         },
         23: {
-          question: "Est-ce que votre animal va à l’extérieur ?",
+          question: "Est-ce que votre animal va à l’extérieur?",
           response: "",
           type: "radio",
           required: false,
         },
         24: {
-          question: "Au besoin, précisez :",
+          question: "Au besoin, précisez:",
           response: "",
           type: "text",
           required: false,
         },
         25: {
           question:
-            "Décrivez le comportement de votre animal en milieu vétérinaire (calme, anxieux, énergique, etc.) :",
+            "Décrivez le comportement de votre animal en milieu vétérinaire (calme, anxieux, énergique, etc.):",
           response: "",
           type: "text",
           required: false,

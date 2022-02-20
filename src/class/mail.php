@@ -11,7 +11,7 @@ $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 $headers .= "From: website@cvrivesud.com" . "\r\n" .
 //$to = "stagiairetsa@hotmail.com, helena.levesque@cvrivesud.com, isabelle.langlois@gvmi.com";
-$to = "isabelle.langlois@vetetnous.com";
+$to = "consultation-cvlv@cvlaval.com, isabelle.langlois@vetetnous.com";
 
 $retour = mail($to, $objPost->subject, $objPost->body, $headers);
 
