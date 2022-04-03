@@ -1,14 +1,16 @@
 <template>
   <q-page class="page">
-    <q-form @submit.prevent="onSubmit" class="q-gutter-md">
+    <q-form @submit.prevent="store.methods.onSubmit">
       <!-- information client -->
       <p class="text-instruction">Vos informations</p>
       <div class="information-container">
         <div class="information-element">
-          <label>{{ informationClient.clientName.question }}</label>
+          <label>{{
+            store.state.informationClient.clientName.questionF
+          }}</label>
           <q-input
             outlined
-            v-model="informationClient.clientName.response"
+            v-model="store.state.informationClient.clientName.response"
             type="text"
             clearable
             lazy-rules
@@ -19,10 +21,12 @@
           />
         </div>
         <div class="information-element">
-          <label>{{ informationClient.patientName.question }}</label>
+          <label>{{
+            store.state.informationClient.patientName.questionF
+          }}</label>
           <q-input
             outlined
-            v-model="informationClient.patientName.response"
+            v-model="store.state.informationClient.patientName.response"
             type="text"
             clearable
             lazy-rules
@@ -35,10 +39,12 @@
       </div>
       <div class="information-container">
         <div class="information-element">
-          <label>{{ informationClient.phoneNumber.question }}</label>
+          <label>{{
+            store.state.informationClient.phoneNumber.questionF
+          }}</label>
           <q-input
             outlined
-            v-model="informationClient.phoneNumber.response"
+            v-model="store.state.informationClient.phoneNumber.response"
             type="tel"
             clearable
             lazy-rules
@@ -49,25 +55,27 @@
           />
         </div>
         <div class="information-element">
-          <label>{{ informationClient.dossierID.question }}</label>
+          <label>{{ store.state.informationClient.dossierID.questionF }}</label>
           <q-input
             outlined
-            v-model="informationClient.dossierID.response"
+            v-model="store.state.informationClient.dossierID.response"
             type="number"
             clearable
           />
         </div>
         <div class="information-element">
-          <label>{{ informationClient.clientEmail.question }}</label>
+          <label>{{
+            store.state.informationClient.clientEmail.questionF
+          }}</label>
           <q-input
             outlined
-            v-model="informationClient.clientEmail.response"
+            v-model="store.state.informationClient.clientEmail.response"
             type="email"
             clearable
           />
         </div>
       </div>
-      <div class="separator-red"></div>
+      <div class="separator-red q-mt-xl"></div>
 
       <!-- section question -->
       <p class="text-instruction">
@@ -75,40 +83,76 @@
         connaissances.
       </p>
 
-      <div v-for="(question, index) in questionResponse" :key="index">
+      <div
+        v-for="(question, index) in store.state.questionResponse"
+        :key="index"
+      >
         <div v-if="question.type === 'text' && !question.required">
-          <label>{{ question.question }}</label>
-          <q-input
-            outlined
-            v-model="question.response"
-            type="text"
-            autogrow
-            clearable
-          />
+          <div :style="{ margin: question.margin ? question.margin : '0rem' }">
+            <label>{{ question.questionF }}</label>
+            <q-input
+              outlined
+              v-model="question.response"
+              type="text"
+              autogrow
+              clearable
+            />
+          </div>
         </div>
 
-        <div class="radio-container" v-if="question.type === 'radio'">
-          <label class="radio-question">{{ question.question }}</label>
+        <div
+          class="radio-container"
+          v-if="question.type === 'radio'"
+          :style="{ margin: question.margin ? question.margin : '0rem' }"
+        >
+          <label class="radio-question">{{ question.questionF }}</label>
           <div class="radio-response">
             <q-radio v-model="question.response" val="oui" label="Oui" />
             <q-radio v-model="question.response" val="non" label="Non" />
           </div>
         </div>
 
+        <div
+          class="radio-container"
+          v-if="question.type === 'radio3'"
+          :style="{ margin: question.margin ? question.margin : '0rem' }"
+        >
+          <label class="radio-question">{{ question.questionF }}</label>
+          <div class="radio-response">
+            <q-radio
+              v-model="question.response"
+              :val="question.value1F"
+              :label="question.value1F"
+            />
+            <q-radio
+              v-model="question.response"
+              :val="question.value2F"
+              :label="question.value2F"
+            />
+            <q-radio
+              v-model="question.response"
+              :val="question.value3F"
+              :label="question.value3F"
+            />
+          </div>
+        </div>
+
         <div v-if="question.type === 'text' && question.required">
-          <label>{{ question.question }}</label>
-          <q-input
-            outlined
-            v-model="question.response"
-            type="text"
-            autogrow
-            clearable
-            lazy-rules
-            :rules="[
-              (val) =>
-                (val && val.length > 0) || 'Veuillez inscrire votre réponse',
-            ]"
-          />
+          <div :style="{ margin: question.margin ? question.margin : '0rem' }">
+            <label>{{ question.questionF }}</label>
+            <q-input
+              outlined
+              v-model="question.response"
+              type="text"
+              autogrow
+              clearable
+              lazy-rules
+              :rules="[
+                (val) =>
+                  (val && val.length > 0) || 'Veuillez inscrire votre réponse',
+              ]"
+            />
+          </div>
         </div>
       </div>
 
@@ -124,242 +168,21 @@
 </template>
 
 <script>
-import { ContentEmail } from "../class/createContentEmail.js";
+import { onMounted, inject } from "vue";
 
 export default {
-  data() {
-    return {
-      nameTest: "",
-      informationClient: {
-        dossierID: {
-          question: "Votre numéro de dossier si connu:",
-          titleEmail: "Numéro de dossier : ",
-          response: "",
-        },
-        clientName: {
-          question: "Nom au dossier: *",
-          titleEmail: "Nom : ",
-          response: "",
-        },
-        patientName: {
-          question: "Nom de votre animal: *",
-          titleEmail: "Nom du patient: ",
-          response: "",
-        },
-        phoneNumber: {
-          question: "Numéro de téléphone au dossier: *",
-          titleEmail: "Numéro de téléphone: ",
-          response: "",
-        },
-        clientEmail: {
-          question: "Votre courriel:",
-          titleEmail: "Courriel: ",
-          response: "",
-        },
-      },
-      questionResponse: {
-        1: {
-          question: "Quelle est la raison de votre visite?",
-          response: "",
-          type: "text",
-          required: true,
-        },
-        2: {
-          question:
-            "Décrivez-le ou les problème(s) en détail et depuis combien de temps cela dure.",
-          response: "",
-          type: "text",
-          required: false,
-        },
-        3: {
-          question: "Est-ce que votre animal mange normalement?",
-          response: "",
-          type: "radio",
-          required: true,
-        },
-        4: {
-          question: "Si non, depuis combien de temps?",
-          response: "",
-          type: "text",
-          required: false,
-        },
-        5: {
-          question: "Est-ce que votre animal présente des vomissements?",
-          response: "",
-          type: "radio",
-          required: true,
-        },
-        6: {
-          question: "Au besoin, précisez:",
-          response: "",
-          type: "text",
-          required: false,
-        },
-        7: {
-          question: "Est-ce que votre animal présente de la diarrhée?",
-          response: "",
-          type: "radio",
-          required: true,
-        },
-        8: {
-          question: "Au besoin, précisez:",
-          response: "",
-          type: "text",
-          required: false,
-        },
-        9: {
-          question: "Est-ce que votre animal présente des urines anormales?",
-          response: "",
-          type: "radio",
-          required: true,
-        },
-        10: {
-          question: "Au besoin, précisez:",
-          response: "",
-          type: "text",
-          required: false,
-        },
-        11: {
-          question: "Est-ce que votre animal présente de la toux?",
-          response: "",
-          type: "radio",
-          required: true,
-        },
-        12: {
-          question: "Au besoin, précisez:",
-          response: "",
-          type: "text",
-          required: false,
-        },
-        13: {
-          question:
-            "Est-ce que votre animal boit plus d’eau et urine plus qu’à l’habitude?",
-          response: "",
-          type: "radio",
-          required: true,
-        },
-        14: {
-          question: "Au besoin, précisez:",
-          response: "",
-          type: "text",
-          required: false,
-        },
-        15: {
-          question: "Est-ce que votre animal présente une perte de poids?",
-          response: "",
-          type: "radio",
-          required: true,
-        },
-        16: {
-          question: "Au besoin, précisez:",
-          response: "",
-          type: "text",
-          required: false,
-        },
-        17: {
-          question: "Antécédents médicaux connus:",
-          response: "",
-          type: "text",
-          required: false,
-        },
-        18: {
-          question:
-            "Médicament(s) d’ordonnance et/ou vente libre/supplément(s) pris actuellement. Merci d’indiquer le nom, la posologie et l’heure d’administration:",
-          response: "",
-          type: "text",
-          required: false,
-        },
-        19: {
-          question: "Sa diète quotidienne:",
-          response: "",
-          type: "text",
-          required: false,
-        },
-        20: {
-          question: "Son statut vaccinal:",
-          response: "",
-          type: "text",
-          required: false,
-        },
-        21: {
-          question: "Prévention antiparasitaire:",
-          response: "",
-          type: "text",
-          required: false,
-        },
-        22: {
-          question: "Des allergies connues?",
-          response: "",
-          type: "text",
-          required: false,
-        },
-        23: {
-          question: "Est-ce que votre animal va à l’extérieur?",
-          response: "",
-          type: "radio",
-          required: false,
-        },
-        24: {
-          question: "Au besoin, précisez:",
-          response: "",
-          type: "text",
-          required: false,
-        },
-        25: {
-          question:
-            "Décrivez le comportement de votre animal en milieu vétérinaire (calme, anxieux, énergique, etc.):",
-          response: "",
-          type: "text",
-          required: false,
-        },
-      },
-    };
-  },
-  methods: {
-    onSubmit() {
-      const axios = require("axios").default;
-      const btnSubmit = document.querySelector(".btn-submit");
-      const textThanks = document.querySelector(".text-thanks");
-      const textError = document.querySelector(".text-error");
+  setup() {
+    // Choisir le store selon les questions/centre sur les pages francaise et anglaise
+    // const store = inject("storeCVLVgen");
+    // const store = inject("storeCVRSgen");
+    // const store = inject("storeCVRSMiFirstVisit");
+    // const store = inject("storeCVRSMiFollowUp");
+    const store = inject("storeMTRLgen");
 
-      const subject = ContentEmail.createContentEmail(
-        this.informationClient,
-        this.questionResponse
-      ).subject;
-      const body = ContentEmail.createContentEmail(
-        this.informationClient,
-        this.questionResponse
-      ).body;
-      console.log(body);
-      // console.log(subject);
-      axios
-        .post("/_outilsinternes/forms/preconsultation-general/mail.php", {
-          body: body,
-          subject: subject,
-          timeout: 2000,
-        })
-        .then(function (response) {
-          console.log(response);
-
-          console.log(response.status);
-
-          if (response.status === 200) {
-            textThanks.classList.remove("hidden");
-            btnSubmit.classList.add("hidden");
-          } else {
-            textError.classList.remove("hidden");
-            btnSubmit.classList.add("hidden");
-          }
-        })
-        .catch(function (error) {
-          console.log(error);
-          textError.classList.remove("hidden");
-          btnSubmit.classList.add("hidden");
-        });
-    },
-  },
-  mounted() {
-    console.log(`Bonjour Ian et Mathieu :)`);
+    onMounted(function () {
+      console.log(`Bonjour Ian et Mathieu :)`);
+    });
+    return { store };
   },
 };
 </script>

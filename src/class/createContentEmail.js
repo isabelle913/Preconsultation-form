@@ -52,7 +52,7 @@ export class ContentEmail {
 
     for (const question in questionResponse) {
       tempo += `<div class="container">
-      <p class="question">${questionResponse[question].question}</p>
+      <p class="question">${questionResponse[question].questionF}</p>
       <p class="response">${questionResponse[question].response}</p>
     </div>`;
     }

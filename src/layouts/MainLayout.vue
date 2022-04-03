@@ -17,13 +17,13 @@
       <router-view />
     </q-page-container>
 
-    <q-footer elevated class="bg-primary text-white">
+    <!-- <q-footer elevated class="bg-primary text-white">
       <q-toolbar>
         <q-toolbar-title class="toolbar-title">
           <div>Centre Vétérinaire Laval - Vet et Nous</div>
         </q-toolbar-title>
       </q-toolbar>
-    </q-footer>
+    </q-footer> -->
   </q-layout>
 </template>
 
@@ -39,7 +39,7 @@ export default defineComponent({
   },
 
   updated() {
-    const reg = /en/g;
+    const reg = /en$/g;
     if (reg.test(window.location.href)) {
       this.english = true;
     } else {

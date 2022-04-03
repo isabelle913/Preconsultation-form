@@ -34,3 +34,4 @@ yarn-error.log*
 
 /src/class/pratique.html
 /src/class/mail.php
+/src/class/mail-form.php
