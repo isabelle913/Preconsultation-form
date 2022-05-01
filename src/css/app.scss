@@ -47,6 +47,23 @@
   font-size: 1.5rem;
   margin: 10% 10%;
 }
+.box-btn-exo {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 10% auto;
+  margin: 10px auto 0px;
+  //   background: pink;
+}
+.btn-exo {
+  background: #b0e3d6;
+  color: black;
+  font-size: 1.5rem;
+  margin: 5% 5%;
+}
 
 // form pages
 .page {
@@ -67,7 +84,7 @@
 .information-element {
   width: 40%;
   min-width: 300px;
-  margin: 0 auto;
+  margin: 0 auto 5px;
 }
 
 .separator-red {
@@ -76,22 +93,23 @@
   height: 5px;
 }
 
-.radio-container {
-  display: flex;
-  flex-wrap: wrap;
-}
-.radio-question {
-  width: 60%;
-  // background: pink;
-  padding-top: 10px;
-  flex-grow: 1;
-}
-.radio-response {
-  width: 40%;
-  min-width: 140px;
-  // background: lightblue;
-  flex-shrink: 0;
-}
+// .checkbox-container {
+//   display: flex;
+//   flex-wrap: wrap;
+// }
+// .checkbox-question {
+//   width: 60%;
+//   //background: pink;
+//   padding-top: 10px;
+//   flex-grow: 1;
+// }
+// .checkbox-response {
+//   width: 40%;
+//   min-width: 140px;
+//   //background: lightblue;
+//   flex-shrink: 0;
+// }
+
 .btn-submit-container {
   width: 100%;
   display: flex;
@@ -118,5 +136,24 @@
 @media screen and (max-width: 500px) {
   .btn-language {
     font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .radio-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .radio-question {
+    width: 60%;
+    // background: pink;
+    padding-top: 10px;
+    flex-grow: 1;
+  }
+  .radio-response {
+    width: 40%;
+    min-width: 140px;
+    // background: lightblue;
+    flex-shrink: 0;
   }
 }

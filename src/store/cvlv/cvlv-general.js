@@ -1,8 +1,9 @@
 "use strict";
 import { reactive } from "vue";
-import { ContentEmail } from "../class/createContentEmail.js";
+import { ContentEmail } from "../../class/createContentEmail.js";
 
 const state = reactive({
+  titre: "Formulaire générale CVL",
   informationClient: {
     dossierID: {
       questionF: "Votre numéro de dossier si connu:",
@@ -42,6 +43,7 @@ const state = reactive({
       response: "",
       type: "text",
       required: true,
+      margin: "0",
     },
     2: {
       questionF:
@@ -51,6 +53,7 @@ const state = reactive({
       response: "",
       type: "text",
       required: false,
+      margin: "2rem 0 1rem",
     },
     3: {
       questionF: "Est-ce que votre animal mange normalement?",
@@ -58,6 +61,7 @@ const state = reactive({
       response: "",
       type: "radio",
       required: true,
+      margin: "2rem 0 0rem",
     },
     4: {
       questionF: "Si non, depuis combien de temps?",
@@ -65,6 +69,7 @@ const state = reactive({
       response: "",
       type: "text",
       required: false,
+      margin: "0rem 0 1rem",
     },
     5: {
       questionF: "Est-ce que votre animal présente des vomissements?",
@@ -72,6 +77,7 @@ const state = reactive({
       response: "",
       type: "radio",
       required: true,
+      margin: "2rem 0 0rem",
     },
     6: {
       questionF: "Au besoin, précisez:",
@@ -79,6 +85,7 @@ const state = reactive({
       response: "",
       type: "text",
       required: false,
+      margin: "0rem 0 1rem",
     },
     7: {
       questionF: "Est-ce que votre animal présente de la diarrhée?",
@@ -86,6 +93,7 @@ const state = reactive({
       response: "",
       type: "radio",
       required: true,
+      margin: "2rem 0 0rem",
     },
     8: {
       questionF: "Au besoin, précisez:",
@@ -93,6 +101,7 @@ const state = reactive({
       response: "",
       type: "text",
       required: false,
+      margin: "0rem 0 1rem",
     },
     9: {
       questionF: "Est-ce que votre animal présente des urines anormales?",
@@ -100,6 +109,7 @@ const state = reactive({
       response: "",
       type: "radio",
       required: true,
+      margin: "2rem 0 0rem",
     },
     10: {
       questionF: "Au besoin, précisez:",
@@ -107,13 +117,16 @@ const state = reactive({
       response: "",
       type: "text",
       required: false,
+      margin: "0rem 0 1rem",
     },
+
     11: {
       questionF: "Est-ce que votre animal présente de la toux?",
       questionE: "Is your pet coughing? ",
       response: "",
       type: "radio",
       required: true,
+      margin: "2rem 0 0rem",
     },
     12: {
       questionF: "Au besoin, précisez:",
@@ -121,6 +134,7 @@ const state = reactive({
       response: "",
       type: "text",
       required: false,
+      margin: "0rem 0 1rem",
     },
     13: {
       questionF:
@@ -129,6 +143,7 @@ const state = reactive({
       response: "",
       type: "radio",
       required: true,
+      margin: "2rem 0 0rem",
     },
     14: {
       questionF: "Au besoin, précisez:",
@@ -136,6 +151,7 @@ const state = reactive({
       response: "",
       type: "text",
       required: false,
+      margin: "0rem 0 1rem",
     },
     15: {
       questionF: "Est-ce que votre animal présente une perte de poids?",
@@ -143,6 +159,7 @@ const state = reactive({
       response: "",
       type: "radio",
       required: true,
+      margin: "2rem 0 0rem",
     },
     16: {
       questionF: "Au besoin, précisez:",
@@ -150,6 +167,7 @@ const state = reactive({
       response: "",
       type: "text",
       required: false,
+      margin: "0rem 0 1rem",
     },
     17: {
       questionF: "Antécédents médicaux connus:",
@@ -157,6 +175,7 @@ const state = reactive({
       response: "",
       type: "text",
       required: false,
+      margin: "2rem 0 1rem",
     },
     18: {
       questionF:
@@ -166,50 +185,93 @@ const state = reactive({
       response: "",
       type: "text",
       required: false,
+      margin: "2rem 0 1rem",
     },
     19: {
+      questionF:
+        "Est-ce que votre animal est suivi par un oncologue et/ou prend/reçoit des traitements de chimiothérapie?",
+      questionE:
+        "Is your pet being followed  by an oncologist and/or is taking/receiving chemotherapy treatments?",
+      response: "",
+      type: "text",
+      required: false,
+      margin: "2rem 0 1rem",
+    },
+    20: {
+      questionF:
+        "Est-ce que votre animal prend des médicaments chimiothérapeutique?",
+      questionE: "Is your animal taking chemotherapeutic medication?",
+      response: "",
+      type: "radio",
+      required: false,
+      margin: "2rem 0 0rem",
+    },
+    21: {
+      questionF: "Si oui, nom, la posologie et l’heure d’administration:",
+      questionE:
+        "If so, please indicate the name, dosage, and administration hours:",
+      response: "",
+      type: "text",
+      required: false,
+      margin: "0rem 0 1rem",
+    },
+    22: {
       questionF: "Sa diète quotidienne:",
       questionE: "Daily diet: ",
       response: "",
       type: "text",
       required: false,
+      margin: "2rem 0 1rem",
     },
-    20: {
-      questionF: "Son statut vaccinal:",
+    23: {
+      questionF: "Son statut vaccinal, au besoin précisez:",
       questionE: "Vaccination status:",
       response: "",
       type: "text",
       required: false,
+      margin: "2rem 0 1rem",
     },
-    21: {
-      questionF: "Prévention antiparasitaire:",
+    24: {
+      questionF: "Prévention antiparasitaire, au besoin précisez:",
       questionE: "Parasite prevention:",
       response: "",
       type: "text",
       required: false,
+      margin: "2rem 0 1rem",
     },
-    22: {
-      questionF: "Des allergies connues?",
+    25: {
+      questionF: "Des allergies connues:",
       questionE: "Known allergies:",
-      response: "",
-      type: "text",
-      required: false,
-    },
-    23: {
-      questionF: "Est-ce que votre animal va à l’extérieur?",
-      questionE: "Does your pet go outside?",
       response: "",
       type: "radio",
       required: false,
+      margin: "2rem 0 0rem",
     },
-    24: {
+    26: {
       questionF: "Au besoin, précisez:",
       questionE: "Please specify",
       response: "",
       type: "text",
       required: false,
+      margin: "0rem 0 1rem",
     },
-    25: {
+    27: {
+      questionF: "Est-ce que votre animal va à l’extérieur?",
+      questionE: "Does your pet go outside?",
+      response: "",
+      type: "radio",
+      required: false,
+      margin: "2rem 0 0rem",
+    },
+    28: {
+      questionF: "Au besoin, précisez:",
+      questionE: "Please specify",
+      response: "",
+      type: "text",
+      required: false,
+      margin: "0rem 0 1rem",
+    },
+    29: {
       questionF:
         "Décrivez le comportement de votre animal en milieu vétérinaire (calme, anxieux, énergique, etc.):",
       questionE:
@@ -217,6 +279,7 @@ const state = reactive({
       response: "",
       type: "text",
       required: false,
+      margin: "2rem 0 1rem",
     },
   },
 });
@@ -228,18 +291,14 @@ const methods = {
     const textThanks = document.querySelector(".text-thanks");
     const textError = document.querySelector(".text-error");
 
-    const subject = ContentEmail.createContentEmail(
-      state.informationClient,
-      state.questionResponse
-    ).subject;
-    const body = ContentEmail.createContentEmail(
-      state.informationClient,
-      state.questionResponse
-    ).body;
+    const subject = ContentEmail.createContentEmail(state).subject;
+    const body = ContentEmail.createContentEmail(state).body;
+
     console.log(body);
     console.log(subject);
+
     axios
-      .post("/_outilsinternes/mail-form.php", {
+      .post("/_outilsinternes/mail.php", {
         body: body,
         subject: subject,
         timeout: 2000,

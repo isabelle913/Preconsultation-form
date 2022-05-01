@@ -13,7 +13,7 @@ export class ContentEmail {
                             margin: auto;
                             padding: 15px;
                           }
-                          h1 {
+                          h1, h2 {
                             text-align: center;
                             margin-bottom: 50px;
                           }
@@ -34,9 +34,10 @@ export class ContentEmail {
                       </head>
                       `;
 
-  static informationclient(informationClient) {
+  static informationclient(titre, informationClient) {
     let tempo = `<body>
                         <h1>Formulaire pré-consultation</h1>
+                        <h2>${titre}<h2>
                         <h3>Informations client:</h3>`;
     for (const question in informationClient) {
       tempo += `<div class="container">
@@ -64,7 +65,7 @@ export class ContentEmail {
     return tempo;
   }
 
-  static createContentEmail(informationClient, questionResponse) {
+  static createContentEmail(state) {
     let emailBody = ContentEmail.head;
     const now = new Date();
 
@@ -72,13 +73,16 @@ export class ContentEmail {
       now.getMonth() + 1
     }/${now.getFullYear()} à ${now.getHours()}:${now.getMinutes()} `;
 
-    emailBody += ContentEmail.informationclient(informationClient);
+    emailBody += ContentEmail.informationclient(
+      state.titre,
+      state.informationClient
+    );
 
-    emailBody += ContentEmail.responseClient(questionResponse);
+    emailBody += ContentEmail.responseClient(state.questionResponse);
 
     emailBody += ContentEmail.footer(formatNow);
 
-    const emailSubject = `Formulaire pré-consultation de ${informationClient.patientName.response}, ${informationClient.clientName.response}, ${informationClient.dossierID.response}`;
+    const emailSubject = `Formulaire pré-consultation de ${state.informationClient.patientName.response}, ${state.informationClient.clientName.response}, ${state.informationClient.dossierID.response}`;
 
     return { body: emailBody, subject: emailSubject };
   }

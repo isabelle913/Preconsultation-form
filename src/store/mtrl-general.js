@@ -3,6 +3,7 @@ import { reactive } from "vue";
 import { ContentEmail } from "../class/createContentEmail.js";
 
 const state = reactive({
+  titre: "Formulaire générale MTRL",
   informationClient: {
     dossierID: {
       questionF: "Votre numéro de dossier si connu:",
@@ -315,16 +316,12 @@ const methods = {
     const textThanks = document.querySelector(".text-thanks");
     const textError = document.querySelector(".text-error");
 
-    const subject = ContentEmail.createContentEmail(
-      state.informationClient,
-      state.questionResponse
-    ).subject;
-    const body = ContentEmail.createContentEmail(
-      state.informationClient,
-      state.questionResponse
-    ).body;
+    const subject = ContentEmail.createContentEmail(state).subject;
+    const body = ContentEmail.createContentEmail(state).body;
+
     // console.log(body);
     // console.log(subject);
+
     axios
       .post("/_outilsinternes/mail-form.php", {
         body: body,

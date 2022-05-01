@@ -152,6 +152,17 @@
             ]"
           />
         </div>
+        <div
+          v-if="question.type === 'checkBox'"
+          :style="{ margin: question.margin ? question.margin : '0rem' }"
+        >
+          <label>{{ question.questionE }}</label>
+          <q-option-group
+            v-model="question.response"
+            :options="question.optionsE"
+            type="checkbox"
+          />
+        </div>
       </div>
 
       <div class="btn-submit-container">
@@ -175,7 +186,11 @@ export default {
     // const store = inject("storeCVRSgen");
     // const store = inject("storeCVRSMiFirstVisit");
     // const store = inject("storeCVRSMiFollowUp");
-    const store = inject("storeMTRLgen");
+    const store = inject("storeCVRSOphtalmoFirstVisit");
+    // const store = inject("storeMTRLgen");
+    // CVLV Exotics
+    // const storeExo = inject("storeCVLVExoticsChoices");
+    // const store = inject(`storeCVLVExotics${storeExo.getters.storeTemplate()}`);
 
     onMounted(function () {
       console.log(`Bonjour Ian et Mathieu :)`);
