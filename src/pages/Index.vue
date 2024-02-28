@@ -2,17 +2,17 @@
   <q-page>
     <div class="box-logo">
       <!-- ********************* Choisir Logo -->
-      <img
+      <!-- <img
         src="../assets/cvlv-700px.png"
         alt="Logo du Centre Vétérinaire Laval"
         class="logo"
-      />
+      /> -->
 
-      <!-- <img
+      <img
         src="../assets/cvrs-700px.png"
         alt="Logo du Centre Vétérinaire Rive-Sud"
         class="logo"
-      /> -->
+      />
 
       <!-- <img
         src="../assets/cvm_hop_complet_rouge.png"
@@ -30,10 +30,10 @@
     <!-- <exotics-choices></exotics-choices> -->
 
     <!-- ***** Template CVRS specialty -->
-    <!-- <cvrs-specialty-choices></cvrs-specialty-choices> -->
+    <cvrs-specialty-choices></cvrs-specialty-choices>
 
     <!-- ***** Template CVRS specialty -->
-    <cvlv-specialty-choices></cvlv-specialty-choices>
+    <!-- <cvlv-specialty-choices></cvlv-specialty-choices> -->
   </q-page>
 </template>
 
