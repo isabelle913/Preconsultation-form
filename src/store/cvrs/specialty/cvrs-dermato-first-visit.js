@@ -4,7 +4,7 @@ import { reactive } from "vue";
 import { ContentEmail } from "../../../class/createContentEmailNew.js";
 
 const state = reactive({
-  titre: "Médecine interne, 1er RDV",
+  titre: "Dermato",
   informationClient: {
     dossierID: {
       questionF: "Votre numéro de dossier si connu:",
