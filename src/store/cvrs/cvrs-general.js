@@ -242,9 +242,9 @@ const methods = {
         timeout: 2000,
       })
       .then(function (response) {
-        console.log(response);
+        // console.log(response);
 
-        console.log(response.status);
+        // console.log(response.status);
 
         if (response.status === 200) {
           textThanks.classList.remove("hidden");

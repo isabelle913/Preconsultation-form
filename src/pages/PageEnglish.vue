@@ -182,15 +182,25 @@ import { onMounted, inject } from "vue";
 export default {
   setup() {
     // Choisir le store selon les questions/centre sur les pages francaise et anglaise
-    // const store = inject("storeCVLVgen");
+
+    // CVRS Général
     // const store = inject("storeCVRSgen");
-    // const store = inject("storeCVRSMiFirstVisit");
-    // const store = inject("storeCVRSMiFollowUp");
-    const store = inject("storeCVRSOphtalmoFirstVisit");
-    // const store = inject("storeMTRLgen");
+
+    // CVRS spécialité
+    const storeCVRSSpecialtyChoices = inject("storeCVRSSpecialtyChoices");
+    const store = inject(
+      `storeCVRS${storeCVRSSpecialtyChoices.getters.storeTemplate()}`
+    );
+
+    // CVL général
+    // const store = inject("storeCVLVgen");
+
     // CVLV Exotics
     // const storeExo = inject("storeCVLVExoticsChoices");
     // const store = inject(`storeCVLVExotics${storeExo.getters.storeTemplate()}`);
+
+    // MTRL
+    // const store = inject("storeMTRLgen");
 
     onMounted(function () {
       console.log(`Bonjour Ian et Mathieu :)`);

@@ -1,6 +1,7 @@
 "use strict";
 import { reactive } from "vue";
-import { ContentEmail } from "../../class/createContentEmail.js";
+// import { ContentEmail } from "../../../class/createContentEmail.js";
+import { ContentEmail } from "../../../class/createContentEmailNew.js";
 
 const state = reactive({
   titre: "Ophtalmologie, 1er RDV",
@@ -8,31 +9,31 @@ const state = reactive({
     dossierID: {
       questionF: "Votre numéro de dossier si connu:",
       questionE: "Your file number (of known):",
-      titleEmail: "Numéro de dossier : ",
+      titleInEmail: "Numéro de dossier",
       response: "",
     },
     clientName: {
       questionF: "Prénom et nom au dossier: *",
       questionE: "First and last name on file: *",
-      titleEmail: "Nom : ",
+      titleInEmail: "Nom",
       response: "",
     },
     patientName: {
       questionF: "Nom de votre animal: *",
       questionE: "Animal’s name: *",
-      titleEmail: "Nom du patient: ",
+      titleInEmail: "Nom du patient",
       response: "",
     },
     phoneNumber: {
       questionF: "Numéro de téléphone au dossier: *",
       questionE: "Phone number on file: *",
-      titleEmail: "Numéro de téléphone: ",
+      titleInEmail: "Numéro de téléphone",
       response: "",
     },
     clientEmail: {
       questionF: "Votre courriel:",
       questionE: "Your email:",
-      titleEmail: "Courriel: ",
+      titleInEmail: "Courriel",
       response: "",
     },
   },
@@ -443,8 +444,8 @@ const methods = {
     const subject = ContentEmail.createContentEmail(state).subject;
     const body = ContentEmail.createContentEmail(state).body;
 
-    console.log(body);
-    console.log(subject);
+    // console.log(body);
+    // console.log(subject);
 
     axios
       .post("/_outilsinternes/mail-form.php", {
@@ -453,9 +454,9 @@ const methods = {
         timeout: 2000,
       })
       .then(function (response) {
-        console.log(response);
+        // console.log(response);
 
-        console.log(response.status);
+        // console.log(response.status);
 
         if (response.status === 200) {
           textThanks.classList.remove("hidden");

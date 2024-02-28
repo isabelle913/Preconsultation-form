@@ -111,7 +111,58 @@
             <q-radio v-model="question.response" val="non" label="Non" />
           </div>
         </div>
+        <!-- Test choix radio obligatoire -->
+        <!-- <div
+          class="radio-container"
+          v-if="question.type === 'radioObl'"
+          :style="{ margin: question.margin ? question.margin : '0rem' }"
+        >
+          <label class="radio-question">{{ question.questionF }}</label>
+          <div class="radio-response">
+            <q-field
+              ref="question.response"
+              :rules="[(val) => val !== null || 'Veuillez répondre']"
+            >
+              <q-option-group
+                v-model="question.response"
+                :options="options"
+                inline
+            /></q-field>
+          </div>
+          <q-btn @click="test">test</q-btn>
+        </div> -->
+        <!-- Fin test choix radio obligatoire -->
 
+        <!-- Test choix radio question additionnel -->
+        <!-- <div
+          class="radio-container"
+          v-if="question.type === 'radioTest'"
+          :style="{ margin: question.margin ? question.margin : '0rem' }"
+        >
+          <label class="radio-question">{{ question.questionF }}</label>
+          <div class="radio-response">
+            <q-radio v-model="question.response" val="oui" label="Oui" />
+            <q-radio v-model="question.response" val="non" label="Non" />
+          </div>
+
+          <div
+            :style="{ margin: question.margin ? question.margin : '0rem' }"
+            v-if="question.response === question.condition"
+            class="radio-question-add"
+          >
+            <label>{{ question.questionAdd.questionF }}</label>
+            <q-input
+              outlined
+              v-model="question.questionAdd.response"
+              type="text"
+              autogrow
+              clearable
+            />
+          </div> -->
+        <!-- <q-btn @click="test">test</q-btn> -->
+        <!-- </div> -->
+
+        <!-- Fin Test choix radio question additionnel -->
         <div
           class="radio-container"
           v-if="question.type === 'radio3'"
@@ -179,25 +230,60 @@
 </template>
 
 <script>
-import { onMounted, inject } from "vue";
+import { ref, onMounted, inject, computed } from "vue";
 
 export default {
   setup() {
     // Choisir le store selon les questions/centre sur les pages francaise et anglaise
-    // const store = inject("storeCVLVgen");
+
+    // CVRS Général
     // const store = inject("storeCVRSgen");
-    // const store = inject("storeCVRSMiFirstVisit");
-    // const store = inject("storeCVRSMiFollowUp");
-    const store = inject("storeCVRSOphtalmoFirstVisit");
-    // const store = inject("storeMTRLgen");
+
+    // CVRS spécialité
+    const storeCVRSSpecialtyChoices = inject("storeCVRSSpecialtyChoices");
+    const store = inject(
+      `storeCVRS${storeCVRSSpecialtyChoices.getters.storeTemplate()}`
+    );
+
+    // CVL général
+    //const store = inject("storeCVLVgen");
+
     // CVLV Exotics
     // const storeExo = inject("storeCVLVExoticsChoices");
     // const store = inject(`storeCVLVExotics${storeExo.getters.storeTemplate()}`);
 
+    // MTRL
+    // const store = inject("storeMTRLgen");
+
+    //Test bouton radio
+    const testResponse = ref("");
+    const fieldRef = ref(null);
+    const options = ref([
+      {
+        label: "Oui",
+        value: "Oh ey",
+      },
+      { label: "Non", value: "Nop" },
+    ]);
+
+    function test() {
+      console.log(store.questionResponse);
+
+      //console.log(questionResponse);
+    }
+
+    // fin test bouton radio
     onMounted(function () {
       console.log(`Bonjour Ian et Mathieu :)`);
     });
-    return { store };
+    return {
+      store,
+      options,
+      test,
+      testResponse,
+      isValid: computed(() => testResponse.value.length > 0),
+      fieldRef,
+    };
   },
 };
 </script>

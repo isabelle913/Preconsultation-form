@@ -23,6 +23,23 @@ const state = reactive({
   },
 });
 
+/*
+Choix:
+Reptiles
+Oiseaux
+Petits mammifères
+Follow-up même formulaire pour tous
+
+Dans page francaise ou anglaise sélectionne le template avec cette expression
+`storeCVLVExotics${storeExo.getters.storeTemplate()}`
+
+Store disponibles:
+provide("storeCVLVExoticsBirds", storeCVLVExoticsBirds);
+provide("storeCVLVExoticsReptiles", storeCVLVExoticsReptiles);
+provide("storeCVLVExoticsSmallAnimals", storeCVLVExoticsSmallAnimals);
+provide("storeCVLVExoticsFollowUp", storeCVLVExoticsFollowUp);
+*/
+
 const getters = {
   storeTemplate() {
     if (state.typeRDV === "first") {

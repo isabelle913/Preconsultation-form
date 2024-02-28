@@ -345,11 +345,11 @@ const methods = {
     const subject = ContentEmail.createContentEmail(state).subject;
     const body = ContentEmail.createContentEmail(state).body;
 
-    console.log(body);
-    console.log(subject);
+    // console.log(body);
+    // console.log(subject);
 
     axios
-      .post("/_outilsinternes/mail.php", {
+      .post("/_outilsinternes/mail-exo.php", {
         body: body,
         subject: subject,
         timeout: 2000,
