@@ -9,6 +9,7 @@ import storeCVRSSpecialtyChoices from "./store/cvrs/specialty/cvrs-specialty-cho
 import storeCVRSMedecineFirstVisit from "./store/cvrs/specialty/cvrs-medecine-first-visit.js";
 import storeCVRSMedecineFollowUp from "./store/cvrs/specialty/cvrs-medecine-follow-up.js";
 import storeCVRSOphtalmoFirstVisit from "./store/cvrs/specialty/cvrs-ophtalmo-first-visit.js";
+import storeCVRSDermatoFirstVisit from "./store/cvrs/specialty/cvrs-dermato-first-visit";
 
 import storeCVLVgen from "./store/cvlv/cvlv-general.js";
 import storeCVLVSpecialtyChoices from "./store/cvlv/specialty/cvlv-specialty-choices.js";
@@ -28,6 +29,7 @@ export default {
     provide("storeCVRSMedecineFirstVisit", storeCVRSMedecineFirstVisit);
     provide("storeCVRSMedecineFollowUp", storeCVRSMedecineFollowUp);
     provide("storeCVRSOphtalmoFirstVisit", storeCVRSOphtalmoFirstVisit);
+    provide("storeCVRSDermatoFirstVisit", storeCVRSDermatoFirstVisit);
 
     provide("storeCVLVgen", storeCVLVgen);
     provide("storeCVLVSpecialtyChoices", storeCVLVSpecialtyChoices);
