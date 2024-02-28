@@ -128,6 +128,7 @@
               :label="question.value2E"
             />
             <q-radio
+              v-if="question.value3F"
               v-model="question.response"
               :val="question.value3E"
               :label="question.value3E"
@@ -177,7 +178,7 @@
 </template>
 
 <script>
-import { onMounted, inject } from "vue";
+import { inject } from "vue";
 
 export default {
   setup() {
@@ -202,9 +203,6 @@ export default {
     // MTRL
     // const store = inject("storeMTRLgen");
 
-    onMounted(function () {
-      console.log(`Bonjour Ian et Mathieu :)`);
-    });
     return { store };
   },
 };
